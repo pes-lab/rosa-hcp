@@ -118,3 +118,8 @@ variable "region_azs" {
   type        = list(any)
   description = "available zone list for subnet IDs"
 }
+
+variable "compute_machine_type" {
+  type    = string
+  default = "m5.xlarge"
+}
