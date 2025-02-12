@@ -123,3 +123,7 @@ variable "compute_machine_type" {
   type    = string
   default = "m5.xlarge"
 }
+
+variable "operator_role_prefix" {
+  type    = string
+}
