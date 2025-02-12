@@ -157,3 +157,9 @@ variable "host_prefix" {
   type    = number
   default = 23
 }
+
+variable "machine_pool_disk_size" {
+  default     = 75
+  description = "Compute node root disk size, in GiB. This attribute specifically applies to the Worker Machine Pool and becomes irrelevant once the resource is created. Any modifications to the initial Machine Pool should be made through the Terraform imported Machine Pool resource."
+  type        = number
+}
