@@ -81,7 +81,7 @@ module "rosa-hcp" {
   aws_subnet_ids         = var.create_vpc ? var.private_cluster ? module.vpc[0].private_subnets : concat(module.vpc[0].public_subnets, module.vpc[0].private_subnets) : var.aws_subnet_ids
   create_account_roles   = true
   create_operator_roles  = true
-  compute_machine_type   = var.compute_machine_type
+#  compute_machine_type   = var.compute_machine_type
   operator_role_prefix   = var.operator_role_prefix
 # Optional: Configure a cluster administrator user 
 #
@@ -96,6 +96,27 @@ module "rosa-hcp" {
 # by uncommenting and editing the values of the following parameters:
 #  admin_credentials_username = <username>
 #  admin_credentials_password = <password>
+  machine_pools = {
+    pool1 = {
+      name = "machine-pool1"
+      aws_node_pool = {
+        instance_type = var.compute_machine_type
+        tags = {}
+      }
+      auto_repair = true
+      replicas = 3
+      openshift_version = var.openshift_version
+      subnet_id = var.aws_subnet_ids[0]
+      autoscaling = {
+        enabled = true
+        min_replicas = 1
+        max_replicas = 4
+      }
+    },
+    pool2 = {
+
+    }
+  }
 
   depends_on = [time_sleep.wait_60_seconds]
 }
