@@ -117,6 +117,6 @@ module "mp" {
   autoscaling = {
     enabled = true
     min_replicas = 1
-    max_replicas = 4
+    max_replicas = 2
   }
 }
