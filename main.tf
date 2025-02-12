@@ -57,7 +57,8 @@ resource "random_string" "random_name" {
 locals {
   worker_node_replicas = var.multi_az ? 3 : 2
   # If cluster_name is not null, use that, otherwise generate a random cluster name
-  cluster_name = coalesce(var.cluster_name, "rosa-${random_string.random_name.result}")
+  # cluster_name = coalesce(var.cluster_name, "rosa-${random_string.random_name.result}")
+  cluster_name = var.cluster_name
 }
 
 # The network validator requires an additional 60 seconds to validate Terraform clusters.
@@ -72,7 +73,7 @@ module "rosa-hcp" {
   cluster_name           = local.cluster_name
   openshift_version      = var.openshift_version
   account_role_prefix    = local.cluster_name
-  operator_role_prefix   = local.cluster_name
+  #operator_role_prefix   = local.cluster_name
   replicas               = local.worker_node_replicas
   aws_availability_zones = local.region_azs
   create_oidc            = true
