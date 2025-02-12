@@ -15,7 +15,7 @@
 #
 variable "openshift_version" {
   type        = string
-  default     = "4.15.44"
+#  default     = "4.15.44"
   description = "Desired version of OpenShift for the cluster, for example '4.14.20'. If version is greater than the currently running version, an upgrade will be scheduled."
 }
 
@@ -47,7 +47,7 @@ variable "multi_az" {
 }
 
 variable "worker_node_replicas" {
-  default     = 3
+#  default     = 3
   description = "Number of worker nodes to provision. Single zone clusters need at least 2 nodes, multizone clusters need at least 3 nodes"
   type        = number
 }
@@ -55,13 +55,13 @@ variable "worker_node_replicas" {
 variable "aws_subnet_ids" {
   type        = list(any)
   description = "A list of either the public or public + private subnet IDs to use for the cluster blocks to use for the cluster"
-  default     = ["subnet-01234567890abcdef", "subnet-01234567890abcdef", "subnet-01234567890abcdef"]
+#  default     = ["subnet-01234567890abcdef", "subnet-01234567890abcdef", "subnet-01234567890abcdef"]
 }
 
 variable "private_cluster" {
   type        = bool
   description = "If you want to create a private cluster, set this value to 'true'. If you want a publicly available cluster, set this value to 'false'."
-  default     = true
+#  default     = true
 }
 
 #VPC Info
@@ -74,19 +74,19 @@ variable "vpc_name" {
 variable "vpc_cidr_block" {
   type        = string
   description = "value of the CIDR block to use for the VPC"
-  default     = "10.0.0.0/16"
+#  default     = "10.0.0.0/16"
 }
 
 variable "private_subnet_cidrs" {
   type        = list(any)
   description = "The CIDR blocks to use for the private subnets"
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+#  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
 }  
 
 variable "public_subnet_cidrs" {
   type        = list(any)
   description = "The CIDR blocks to use for the public subnets"
-  default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+#  default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 }
 
 variable "single_nat_gateway" {
@@ -98,7 +98,7 @@ variable "single_nat_gateway" {
 #AWS Info
 variable "aws_region" {
   type    = string
-  default = "us-east-1"
+#  default = "us-east-1"
 }
 
 variable "default_aws_tags" {
