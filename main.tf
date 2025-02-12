@@ -106,39 +106,20 @@ module "mp" {
   version = "1.6.3"
 
   cluster_id = module.rosa-hcp.cluster_id
-  name = "machine-pool1"
+  name = "il-machine-pool"
   openshift_version = var.openshift_version
 
   aws_node_pool = {
-    instance_type = var.compute_machine_type
+    instance_type = var.il_machine_type
     tags = {}
   }
 
   subnet_id = var.aws_subnet_ids[0]
-  autoscaling = {
-    enabled = true
-    min_replicas = 1
-    max_replicas = 2
-  }
+#  autoscaling = {
+#    enabled = true
+#    min_replicas = 1
+#    max_replicas = 2
+#  }
+  replicas = 1
 }
 
-module "mp2" {
-  source = "terraform-redhat/rosa-hcp/rhcs//modules/machine-pool"
-  version = "1.6.3"
-
-  cluster_id = module.rosa-hcp.cluster_id
-  name = "machine-pool2"
-  openshift_version = var.openshift_version
-
-  aws_node_pool = {
-    instance_type = var.compute_machine_type
-    tags = {}
-  }
-
-  subnet_id = var.aws_subnet_ids[1]
-  autoscaling = {
-    enabled = true
-    min_replicas = 1
-    max_replicas = 2
-  }
-}
