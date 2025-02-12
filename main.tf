@@ -96,23 +96,27 @@ module "rosa-hcp" {
 # by uncommenting and editing the values of the following parameters:
 #  admin_credentials_username = <username>
 #  admin_credentials_password = <password>
-  machine_pools = {
-    pool1 = {
-      name = "machine-pool1"
-      aws_node_pool = {
-        instance_type = var.compute_machine_type
-        tags = {}
-      }
-      auto_repair = true
-      openshift_version = var.openshift_version
-      subnet_id = var.aws_subnet_ids[0]
-      autoscaling = {
-        enabled = true
-        min_replicas = 1
-        max_replicas = 4
-      }
-    }
-  }
 
   depends_on = [time_sleep.wait_60_seconds]
+}
+
+module "mp" {
+  source = "terraform-redhat/rosa-hcp/rhcs//modules/machine-pool"
+  version = "1.6.2"
+
+  cluster_id = module.rosa-hcp.cluster_id
+  name = "machine-pool1"
+  openshift_version = var.openshift_version
+
+  aws_node_pool = {
+    instance_type = var.compute_machine_type
+    tags = {}
+  }
+
+  subnet_id = var.aws_subnet_ids[0]
+  autoscaling = {
+    enabled = true
+    min_replicas = 1
+    max_replicas = 4
+  }
 }
