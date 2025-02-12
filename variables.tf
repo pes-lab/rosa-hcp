@@ -127,3 +127,28 @@ variable "compute_machine_type" {
 variable "operator_role_prefix" {
   type    = string
 }
+
+variable "create_admin_user" {
+  type    = bool
+  default = false
+}
+
+variable "admin_credentials_username" {
+  type    = string
+  default = "cluster-admin"
+}
+
+variable "admin_credentials_password" {
+  type    = string
+  default = null
+}
+
+variable "aws_billing_account_id" {
+  type    = string
+  default = null
+}
+
+variable "host_prefix" {
+  type    = number
+  default = 23
+}
