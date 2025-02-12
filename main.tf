@@ -43,8 +43,9 @@ data "aws_availability_zones" "available" {}
 
 locals {
   # Extract availability zone names for the specified region, limit it to 3 if multi az or 1 if single
-    region_azs = var.multi_az ? slice([for zone in data.aws_availability_zones.available.names : format("%s", zone)], 0, 3) : slice([for zone in data.aws_availability_zones.available.names : format("%s", zone)], 0, 1)
+  #  region_azs = var.multi_az ? slice([for zone in data.aws_availability_zones.available.names : format("%s", zone)], 0, 3) : slice([for zone in data.aws_availability_zones.available.names : format("%s", zone)], 0, 1)
   #  region_azs = ["us-east-1a","us-east-1d","us-east-1f"]
+  region_azs = var.region_azs
 }
 
 resource "random_string" "random_name" {
