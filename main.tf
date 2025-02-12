@@ -102,7 +102,7 @@ module "rosa-hcp" {
 
 module "mp" {
   source = "terraform-redhat/rosa-hcp/rhcs//modules/machine-pool"
-  version = "1.6.2"
+  version = "1.6.3"
 
   cluster_id = module.rosa-hcp.cluster_id
   name = "machine-pool1"
