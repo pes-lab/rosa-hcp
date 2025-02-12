@@ -97,7 +97,16 @@ module "rosa-hcp" {
 # by uncommenting and editing the values of the following parameters:
 #  admin_credentials_username = <username>
 #  admin_credentials_password = <password>
-
+  machine_pools = jsonencode({
+    compute = {
+      instance_type       = "r6a.4xlarge"
+      autoscaling         = true
+      min_replicas        = 12
+      max_replicas        = 18
+      host_prefix         = 23
+      root_disk_size      = "75 GiB"
+    }
+  })
   depends_on = [time_sleep.wait_60_seconds]
 }
 
