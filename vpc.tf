@@ -19,7 +19,7 @@ module "vpc" {
 
   count = var.create_vpc ? 1 : 0
   name  = var.vpc_name
-  cidr  = var.vpc_cidr_block
+  #cidr  = var.vpc_cidr_block
 
   azs             = local.region_azs
   #private_subnets = var.multi_az ? var.private_subnet_cidrs : [var.private_subnet_cidrs[0]]
