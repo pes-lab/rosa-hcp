@@ -111,6 +111,7 @@ module "mp" {
 
   aws_node_pool = {
     instance_type = var.il_machine_type
+    worker_disk_size = var.machine_pool_disk_size
     tags = {}
   }
 
