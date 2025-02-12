@@ -121,7 +121,7 @@ module "mp" {
   }
 }
 
-module "mp" {
+module "mp2" {
   source = "terraform-redhat/rosa-hcp/rhcs//modules/machine-pool"
   version = "1.6.3"
 
