@@ -55,7 +55,8 @@ resource "random_string" "random_name" {
 }
 
 locals {
-  worker_node_replicas = var.multi_az ? 3 : 2
+  #worker_node_replicas = var.multi_az ? 3 : 2
+  worker_node_replicas = var.worker_node_replicas
   # If cluster_name is not null, use that, otherwise generate a random cluster name
   # cluster_name = coalesce(var.cluster_name, "rosa-${random_string.random_name.result}")
   cluster_name = var.cluster_name
