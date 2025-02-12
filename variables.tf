@@ -107,8 +107,14 @@ variable "default_aws_tags" {
   default     = {}
 }
 
+#ADD
 variable "rhcs_token" {
   description = "RHCS离线访问令牌"
   type        = string
   sensitive   = true
 }  
+
+variable "region_azs" {
+  type        = list(any)
+  description = "available zone list for subnet IDs"
+}
