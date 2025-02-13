@@ -85,6 +85,8 @@ module "rosa-hcp" {
   compute_machine_type   = var.compute_machine_type
   operator_role_prefix   = var.operator_role_prefix
   machine_cidr           = var.machine_cidr
+  service_cidr           = var.service_cidr
+  pod_cidr               = var.pod_cidr
 # Optional: Configure a cluster administrator user 
 #
 # Option 1: Default cluster-admin user
