@@ -80,7 +80,7 @@ module "rosa-hcp" {
   create_oidc            = true
   private                = var.private_cluster
   aws_subnet_ids         = var.create_vpc ? var.private_cluster ? module.vpc[0].private_subnets : concat(module.vpc[0].public_subnets, module.vpc[0].private_subnets) : var.aws_subnet_ids
-  create_account_roles   = true
+  create_account_roles   = false
   create_operator_roles  = true
   compute_machine_type   = var.compute_machine_type
   operator_role_prefix   = var.operator_role_prefix
