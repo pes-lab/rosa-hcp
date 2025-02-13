@@ -98,8 +98,8 @@ module "rosa-hcp" {
 # Option 2: Specify administrator username and password
 # Create an administrator user and define your own password
 # by uncommenting and editing the values of the following parameters:
-  admin_credentials_username = var.admin_username
-  admin_credentials_password = var.admin_password
+  admin_credentials_username = var.admin_credentials_username
+  admin_credentials_password = var.admin_credentials_password
 
   depends_on = [time_sleep.wait_60_seconds]
 }
