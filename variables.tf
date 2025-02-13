@@ -167,14 +167,3 @@ variable "pod_cidr" {
   type    = string
   default = "10.128.0.0/14"
 }
-
-variable "admin_username" {
-  type    = string
-  default = "cluster-admin"
-}
-
-variable "admin_password" {
-  type    = string
-  default = null
-}
-
