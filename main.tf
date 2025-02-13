@@ -70,7 +70,7 @@ resource "time_sleep" "wait_60_seconds" {
 }
 module "rosa-hcp" {
   source                 = "terraform-redhat/rosa-hcp/rhcs"
-  version                = "1.6.3"
+  version                = "1.6.5"
   cluster_name           = local.cluster_name
   openshift_version      = var.openshift_version
   account_role_prefix    = local.cluster_name
